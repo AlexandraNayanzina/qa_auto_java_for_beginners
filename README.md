@@ -1,2 +1,1 @@
-# qa_auto_java_for_beginners
-Course qa-auto-baby with Alex Pshe
+# Workshop qa-auto-baby with Alex Pshe
