@@ -2,7 +2,7 @@ DELETE https://crudcrud.com/api/dc5201f0cf314b16b81218f86a523e2b/unicorn/66efbd1
 
 
 ###
-GET https://crudcrud.com/api/dc5201f0cf314b16b81218f86a523e2b/unicorn/66efc04dfe837603e816cb02
+GET https://crudcrud.com/api/dc5201f0cf314b16b81218f86a523e2b/unicorn/66efc448fe837603e816cb0f
 
 ###
 POST https://crudcrud.com/api/dc5201f0cf314b16b81218f86a523e2b/unicorn
@@ -10,5 +10,15 @@ Content-Type: application/json
 
 {
   "name": "Unic",
-  "color": "pink"
+  "color": "red"
+}
+
+###
+
+PUT https://crudcrud.com/api/dc5201f0cf314b16b81218f86a523e2b/unicorn/66efc448fe837603e816cb0f
+Content-Type: application/json
+
+{
+  "name": "Unic",
+  "color": "yellow"
 }

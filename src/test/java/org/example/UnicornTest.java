@@ -18,17 +18,35 @@ public class UnicornTest {
     // Create a Unicorn, save the id
     @Test
     public void userShouldBeAbleToCreateUnicorn() {
-
         String id = UnicornRequests.createUnicorn("{\n" +
                 "  \"name\": \"Unic\",\n" +
                 "  \"color\": \"pink\"\n" +
                 "}");
-
         //Delete the Unicorn by id
         UnicornRequests.deleteUnicorn(id);
 
         //Verify that Unicorn does not exist
-        UnicornRequests.getUnicorn(id);
+        UnicornRequests.getRemovedUnicorn(id);
+    }
+    @Test
+    public void userShouldBeAbleToUpdateUnicorn() {
+        String newColor = "yellow";
+
+        // Create a Unicorn
+        String id = UnicornRequests.createUnicorn("{\n" +
+                "  \"name\": \"Unic\",\n" +
+                "  \"color\": \"pink\"\n" +
+                "}");
+        //Update color
+        UnicornRequests.updateColor(id, "{\n" +
+                "  \"name\": \"Unic\",\n" +
+                "  \"color\": \"yellow\"\n" +
+                "}");
+
+        //Verify that Unicorn has new color
+        String color = UnicornRequests.getUnicorn(id, newColor);
+
+
     }
 
 }
