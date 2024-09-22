@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import org.example.api.UnicornRequests;
+import org.example.api.models.Unicorn;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,10 +19,9 @@ public class UnicornTest {
     // Create a Unicorn, save the id
     @Test
     public void userShouldBeAbleToCreateUnicorn() {
-        String id = UnicornRequests.createUnicorn("{\n" +
-                "  \"name\": \"Unic\",\n" +
-                "  \"color\": \"pink\"\n" +
-                "}");
+
+        Unicorn unicorn1 = new Unicorn("Unic2", "purple");
+        String id = UnicornRequests.createUnicorn(unicorn1.toJson());
         //Delete the Unicorn by id
         UnicornRequests.deleteUnicorn(id);
 
@@ -31,12 +31,10 @@ public class UnicornTest {
     @Test
     public void userShouldBeAbleToUpdateUnicorn() {
         String newColor = "yellow";
+        Unicorn unicorn1 = new Unicorn("Unic2", newColor);
 
         // Create a Unicorn
-        String id = UnicornRequests.createUnicorn("{\n" +
-                "  \"name\": \"Unic\",\n" +
-                "  \"color\": \"pink\"\n" +
-                "}");
+        String id = UnicornRequests.createUnicorn(unicorn1.toJson());
         //Update color
         UnicornRequests.updateColor(id, "{\n" +
                 "  \"name\": \"Unic\",\n" +

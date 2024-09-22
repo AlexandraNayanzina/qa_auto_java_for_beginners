@@ -4,6 +4,7 @@ import io.restassured.RestAssured;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import org.example.api.StudentRequests;
+import org.example.api.models.Student;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,26 +18,22 @@ public class SimpleTest {
 
     @Test
     public void userShouldBeAbleCreateStudent() {
-        // BDD: Given - When - Then
-        StudentRequests.createStudent("{\n" +
-                "  \"name\": \"Test\",\n" +
-                "  \"grade\": 2\n" +
-                "}");
+        Student student = new Student("Alex Test", 2);
+        StudentRequests.createStudent(student);
     }
 
     @Test
     public void userShouldBeAbleDeleteExistingStudent() {
-        // Step 1 - Create user
+        // Serialization and deserialization
+        Student student = new Student("Alex Test", 2);
 
-       String id = StudentRequests.createStudent("{\n" +
-                "  \"name\": \"Test\",\n" +
-                "  \"grade\": 2\n" +
-                "}");
+        // Step 1 - Create user
+       Student createdStudent = StudentRequests.createStudent(student);
 
         // Step2 - Delete user
-        StudentRequests.deleteStudent(id);
+        StudentRequests.deleteStudent(createdStudent.getId());
 
         // Verify that user don't exist
-     StudentRequests.getStudent(id);
+        StudentRequests.getRemovedStudent(createdStudent.getId());
     }
 }
