@@ -32,9 +32,9 @@ public class Book implements Displayable {
 
     @Override
     public void display(){
-        System.out.println("Book title: " + this.title);
-        System.out.println("Book author: " + this.author);
-        System.out.println("Book year: " + this.year);
+        System.out.println("Title: " + this.title);
+        System.out.println("Author: " + this.author);
+        System.out.println(" Book year: " + this.year);
     }
 
 }

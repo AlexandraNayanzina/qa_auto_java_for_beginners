@@ -8,8 +8,30 @@ public class Student {
         return name;
     }
 
+    public Student() {
+        this.name = "undefined";
+        this.id = 0;
+    }
+
+    public Student(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public Student(String name) {
+        this.name = name;
+        this.id = 0;
+    }
+
+    public Student(int id) {
+        this.name = "undefined";
+        this.id = id;
+    }
+
+
     public void setName(String name) {
         this.name = name;
+        this.id = 0;
     }
 
     public int getId() {
@@ -26,10 +48,5 @@ public class Student {
                 "name='" + name + '\'' +
                 ", id=" + id +
                 '}';
-    }
-
-    public Student(String name, int id) {
-        this.name = name;
-        this.id = id;
     }
 }
