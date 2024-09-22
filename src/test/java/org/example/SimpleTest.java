@@ -24,11 +24,9 @@ public class SimpleTest {
 
     @Test
     public void userShouldBeAbleDeleteExistingStudent() {
-        // Serialization and deserialization
-        Student student = new Student("Alex Test", 2);
-
         // Step 1 - Create user
-       Student createdStudent = StudentRequests.createStudent(student);
+        Student student = new Student("Alex Test", 2);
+        Student createdStudent = StudentRequests.createStudent(student);
 
         // Step2 - Delete user
         StudentRequests.deleteStudent(createdStudent.getId());

@@ -16,33 +16,39 @@ public class UnicornTest {
         RestAssured.baseURI = "https://crudcrud.com/api/dc5201f0cf314b16b81218f86a523e2b";
     }
 
-    // Create a Unicorn, save the id
     @Test
     public void userShouldBeAbleToCreateUnicorn() {
-
         Unicorn unicorn1 = new Unicorn("Unic2", "purple");
-        String id = UnicornRequests.createUnicorn(unicorn1.toJson());
+        UnicornRequests.createUnicorn(unicorn1);
+    }
+
+    @Test
+    public void userShouldBeAbleToDeleteUnicorn() {
+        Unicorn unicorn = new Unicorn("Unic3", "purple");
+        Unicorn createdIUnicorn = UnicornRequests.createUnicorn(unicorn);
+
         //Delete the Unicorn by id
-        UnicornRequests.deleteUnicorn(id);
+        UnicornRequests.deleteUnicorn(createdIUnicorn.getId());
 
         //Verify that Unicorn does not exist
-        UnicornRequests.getRemovedUnicorn(id);
+        UnicornRequests.getRemovedUnicorn(createdIUnicorn.getId());
     }
+
     @Test
     public void userShouldBeAbleToUpdateUnicorn() {
         String newColor = "yellow";
-        Unicorn unicorn1 = new Unicorn("Unic2", newColor);
+        Unicorn unicorn = new Unicorn("Unic2", newColor);
 
         // Create a Unicorn
-        String id = UnicornRequests.createUnicorn(unicorn1.toJson());
+        Unicorn createdUnicorn = UnicornRequests.createUnicorn(unicorn);
         //Update color
-        UnicornRequests.updateColor(id, "{\n" +
+        UnicornRequests.updateColor(createdUnicorn.getId(), "{\n" +
                 "  \"name\": \"Unic\",\n" +
                 "  \"color\": \"yellow\"\n" +
                 "}");
 
         //Verify that Unicorn has new color
-        String color = UnicornRequests.getUnicorn(id, newColor);
+        String color = UnicornRequests.getUnicorn(createdUnicorn.getId(), newColor);
 
 
     }

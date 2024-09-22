@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
 import org.example.api.models.Student;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasKey;
 
